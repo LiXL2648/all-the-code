@@ -1,0 +1,41 @@
+class Solution {
+    public int maxAreaOfIsland(int[][] grid) {
+        int row = grid.length, col = grid[0].length, maxArea = 0, area = 0, x, y;
+        // 记录每个为1的坐标是否已经访问过，如果访问过则不参与面积计算
+        int[][] isVisited = new int[row][col];
+        // 表示每个坐标都有上下左右四个方向
+        int[] dx = {-1, 0, 1, 0}, dy = {0, 1, 0, -1}, position;
+        LinkedList<int[]> queue = new LinkedList<>();
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                //  遍历每个坐标，如果已经访问过，则忽略
+                if(grid[i][j] == 1 && isVisited[i][j] == 0) {
+                    // 将访问过的坐标加入优先级队列
+                    queue.addLast(new int[]{i, j});
+                    while(!queue.isEmpty()) {
+                        position = queue.removeFirst();
+                        if(isVisited[position[0]][position[1]] == 0) {
+                            // 标记该坐标已经访问过
+                            isVisited[position[0]][position[1]] = 1;
+                            area++;
+                            // 分别将四个方向满足要求的坐标加入队列，体现了广度优先遍历
+                            for(int k = 0; k < 4; k++) {
+                                x = position[0] + dx[k];
+                                y = position[1] + dy[k];
+                                if(x >= 0 && x < row && y >= 0 && y < col && grid[x][y] == 1) {
+                                    queue.addLast(new int[]{x, y});
+                                }
+                            }
+                        }
+                    }
+                    maxArea = Math.max(maxArea, area);
+                    area = 0;
+                }
+            }
+        }
+        return maxArea;
+    }
+}
+
+//runtime:4 ms
+//memory:41.5 MB
