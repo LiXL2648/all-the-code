@@ -14,8 +14,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan("com.li.cloud.mapper")
 @EnableDiscoveryClient //服务注册和发现
 @RefreshScope // 动态刷新
-public class Main8001 {
+public class Main8002 {
     public static void main(String[] args) {
-        SpringApplication.run(Main8001.class, args);
+        SpringApplication.run(Main8002.class, args);
     }
 }
