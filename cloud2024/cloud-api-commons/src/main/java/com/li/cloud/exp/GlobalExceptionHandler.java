@@ -1,4 +1,4 @@
-package com.li.cloud;
+package com.li.cloud.exp;
 
 import com.li.cloud.resp.ResultData;
 import com.li.cloud.resp.ResultEnum;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
+    //@ExceptionHandler(Exception.class)
     public ResultData<Void> handleRuntimeException(RuntimeException e) {
         log.error("全局异常信息exception:{}", e.getMessage(), e);
         return ResultData.fail(ResultEnum.RC500);

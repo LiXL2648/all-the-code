@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8002
 
 # ==========applicationName + druid-mysql8 driver===================
 spring:
@@ -18,12 +18,3 @@ mybatis:
   type-aliases-package: com.atguigu.cloud.entities
   configuration:
     map-underscore-to-camel-case: true
-
-# ========================zipkin===================
-management:
-  zipkin:
-    tracing:
-      endpoint: http://192.168.26.48:9411/api/v2/spans
-  tracing:
-    sampling:
-      probability: 1.0 #采样率默认为0.1(0.1就是10次只能有一次被记录下来)，值越大收集越及时。
